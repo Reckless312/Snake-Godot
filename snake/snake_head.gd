@@ -9,23 +9,25 @@ var velocity = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	var new_velocity = Vector2.ZERO
-	if Input.is_action_pressed("right"):
+	velocity = velocity.normalized()
+	if Input.is_action_pressed("right") and velocity.x != -1:
 		new_velocity.x = 1
-	elif Input.is_action_pressed("left"):
+		$AnimatedSprite2D.rotation_degrees = 90
+	elif Input.is_action_pressed("left") and velocity.x != 1:
 		new_velocity.x = -1
-	elif Input.is_action_pressed("down"):
+		$AnimatedSprite2D.rotation_degrees = 270
+	elif Input.is_action_pressed("down") and velocity.y != -1:
 		new_velocity.y = 1
-	elif Input.is_action_pressed("up"):
+		$AnimatedSprite2D.rotation_degrees = 180
+	elif Input.is_action_pressed("up") and velocity.y != 1:
 		new_velocity.y = -1
+		$AnimatedSprite2D.rotation_degrees = 0
 	
 	if !new_velocity.is_equal_approx(Vector2.ZERO):
 		velocity = new_velocity
 	
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
+	velocity = velocity * speed
+	$AnimatedSprite2D.play()
 		
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
