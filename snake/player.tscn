@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctkuj4l3758xd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pv32h"]
+
+[node name="Player" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_pv32h")
+metadata/_edit_group_ = true
