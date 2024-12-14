@@ -14,6 +14,7 @@ var velocity = Vector2.ZERO
 func _process(delta: float) -> void:
 	var new_velocity = Vector2.ZERO
 	velocity = velocity.normalized()
+	
 	if Input.is_action_pressed("right") and velocity.x != -1:
 		new_velocity.x = 1
 		$AnimatedSprite2D.rotation_degrees = 90

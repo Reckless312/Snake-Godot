@@ -1,18 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjmgsaimka72j"]
 
+[ext_resource type="Script" path="res://apple.gd" id="1_3pxcn"]
 [ext_resource type="Texture2D" uid="uid://bc22jiyqr77e7" path="res://assets/png/apple_green.png" id="2_mmile"]
 [ext_resource type="Texture2D" uid="uid://c43ujenwt2jd6" path="res://assets/png/apple_red.png" id="2_rl4av"]
-
-[sub_resource type="GDScript" id="GDScript_140td"]
-script/source = "extends Area2D
-
-func _ready() -> void:
-	var colors = $AnimatedSprite2D.sprite_frames.get_animation_names()
-	$AnimatedSprite2D.play(colors[randi() % colors.size()])
-
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kmpxt"]
 animations = [{
@@ -39,7 +29,8 @@ height = 781.866
 
 [node name="Apple" type="Area2D" groups=["apples"]]
 position = Vector2(13, 0)
-script = SubResource("GDScript_140td")
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_3pxcn")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

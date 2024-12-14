@@ -1,6 +1,5 @@
 extends Node
 
-@export var apple_scene : PackedScene
 var score
 
 func _ready() -> void:
@@ -14,8 +13,11 @@ func _on_snake_head_hit() -> void:
 	
 func new_game():
 	score = 0
-	$snake_head.start($StartPosition.position)	
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
-	get_tree().call_group("apples", "queue_free")
+	
+	$snake_head.start($StartPosition.position)	
+	
+	$Apple.place_randomly()
+	
 	$Music.play()
