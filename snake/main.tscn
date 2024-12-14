@@ -32,4 +32,6 @@ stream = ExtResource("5_fpnub")
 parameters/looping = false
 
 [connection signal="hit" from="snake_head" to="." method="_on_snake_head_hit"]
+[connection signal="body_entered" from="Apple" to="snake_head" method="_on_apple_body_entered"]
+[connection signal="hit" from="Apple" to="." method="_on_apple_hit"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

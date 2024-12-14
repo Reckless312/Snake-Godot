@@ -21,3 +21,7 @@ func new_game():
 	$Apple.place_randomly()
 	
 	$Music.play()
+
+
+func _on_apple_hit() -> void:
+	$Apple.place_randomly()
