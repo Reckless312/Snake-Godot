@@ -1,16 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwr1ggqprofhj"]
+[gd_scene load_steps=6 format=3 uid="uid://dwr1ggqprofhj"]
 
 [ext_resource type="PackedScene" uid="uid://bdtq6svqpbjsd" path="res://snake_head.tscn" id="1_bowog"]
 [ext_resource type="Script" path="res://main.gd" id="1_l243u"]
 [ext_resource type="PackedScene" uid="uid://bjmgsaimka72j" path="res://apple.tscn" id="2_jili2"]
+[ext_resource type="PackedScene" uid="uid://j1mduwm4plgf" path="res://hud.tscn" id="4_12mim"]
+[ext_resource type="AudioStream" uid="uid://c0mirpsrqf756" path="res://assets/music/Roku Snake OST - Main Theme.mp3" id="5_fpnub"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_l243u")
 apple_scene = ExtResource("2_jili2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.260211, 0.349803, 0.592432, 1)
 
 [node name="snake_head" parent="." instance=ExtResource("1_bowog")]
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
 
+[node name="HUD" parent="." instance=ExtResource("4_12mim")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fpnub")
+parameters/looping = false
+
 [connection signal="hit" from="snake_head" to="." method="_on_snake_head_hit"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

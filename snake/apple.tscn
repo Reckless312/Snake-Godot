@@ -37,7 +37,7 @@ animations = [{
 radius = 382.565
 height = 781.866
 
-[node name="Apple" type="Area2D"]
+[node name="Apple" type="Area2D" groups=["apples"]]
 position = Vector2(13, 0)
 script = SubResource("GDScript_140td")
 metadata/_edit_group_ = true
