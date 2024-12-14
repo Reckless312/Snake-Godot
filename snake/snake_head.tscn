@@ -19,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qum7p"]
-radius = 259.156
+radius = 103.0
 
 [node name="snake_head" type="Area2D"]
 position = Vector2(-2, 2)
@@ -33,3 +33,5 @@ frame_progress = 0.237297
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qum7p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
