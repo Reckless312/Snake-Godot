@@ -1,7 +1,6 @@
 extends Node
 
 var score
-var started = false
 
 func _ready() -> void:
 	pass
@@ -21,10 +20,15 @@ func new_game():
 	$Apple.place_randomly()
 	
 	$Music.play()
-	
-	started = true
 
 func _on_snake_head_apple_hit() -> void:
-	if started == true:
-		$Apple.hide()
-		$Apple.place_randomly()
+	$EatingApple.play()
+	$Apple.hide()
+	$Apple.place_randomly()
+	$HUD.update_score(10)
+
+
+func _on_snake_head_game_over() -> void:
+	$HUD.show_game_over()
+	$Apple.hide()
+	$snake_head.hide()

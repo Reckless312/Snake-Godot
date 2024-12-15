@@ -3,7 +3,7 @@ extends CanvasLayer
 signal start_game
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _process(delta: float) -> void:
 	pass
@@ -26,7 +26,7 @@ func show_game_over():
 
 
 func update_score(score):
-	$ScoreLabel.text = str(score)
+	$ScoreLabel.text = str(score + int($ScoreLabel.text))
 	
 
 func _on_start_button_pressed() -> void:
