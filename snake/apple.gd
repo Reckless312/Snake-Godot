@@ -1,26 +1,19 @@
 extends Area2D
 
-signal hit
-
 var rng = RandomNumberGenerator.new()
+var screen_size
+var colors
 
 func _ready() -> void:
-    var colors = $AnimatedSprite2D.sprite_frames.get_animation_names()
-    $AnimatedSprite2D.play(colors[randi() % colors.size()])
-    rng.randomize()
-    hide()
+	rng.randomize()
+	screen_size = get_viewport().get_visible_rect().size
+	colors = $AnimatedSprite2D.sprite_frames.get_animation_names()
+	hide()
 
 func _process(delta: float) -> void:
-    pass
-    
+	pass
+	
 func place_randomly():
-    var screen_size = get_viewport().get_visible_rect().size
-    position = Vector2(rng.randi() % int(screen_size.x), rng.randi() % int(screen_size.y))
-    show()
-    $CollisionShape2D.disabled = false
-
-
-func _on_body_entered(body: Node2D) -> void:
-    hide()
-    hit.emit()
-    $CollisionShape2D.set_deferred("disabled", true)
+	position = Vector2(rng.randi() % int(screen_size.x), rng.randi() % int(screen_size.y))
+	$AnimatedSprite2D.play(colors[randi() % colors.size()])
+	show()

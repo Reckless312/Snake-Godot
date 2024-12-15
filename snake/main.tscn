@@ -20,6 +20,7 @@ color = Color(0.260211, 0.349803, 0.592432, 1)
 [node name="snake_head" parent="." instance=ExtResource("1_bowog")]
 
 [node name="Apple" parent="." instance=ExtResource("2_jili2")]
+position = Vector2(218, 56)
 scale = Vector2(0.2, 0.2)
 
 [node name="StartPosition" type="Marker2D" parent="."]
@@ -31,7 +32,6 @@ position = Vector2(240, 450)
 stream = ExtResource("5_fpnub")
 parameters/looping = false
 
-[connection signal="hit" from="snake_head" to="." method="_on_snake_head_hit"]
-[connection signal="body_entered" from="Apple" to="snake_head" method="_on_apple_body_entered"]
-[connection signal="hit" from="Apple" to="." method="_on_apple_hit"]
+[connection signal="apple_hit" from="snake_head" to="." method="_on_snake_head_apple_hit"]
+[connection signal="area_entered" from="Apple" to="snake_head" method="_on_apple_area_entered"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
