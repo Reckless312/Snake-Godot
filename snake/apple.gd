@@ -14,6 +14,10 @@ func _process(delta: float) -> void:
 	pass
 	
 func place_randomly():
-	position = Vector2(rng.randi() % int(screen_size.x), rng.randi() % int(screen_size.y))
+	while true:
+		position = Vector2(rng.randi() % int(screen_size.x), rng.randi() % int(screen_size.y))
+		await get_tree().process_frame
+		if get_overlapping_bodies().size() == 0:
+			break
 	$AnimatedSprite2D.play(colors[randi() % colors.size()])
 	show()

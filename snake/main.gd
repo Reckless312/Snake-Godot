@@ -28,5 +28,3 @@ func _on_snake_head_apple_hit() -> void:
 	if started == true:
 		$Apple.hide()
 		$Apple.place_randomly()
-	if $Apple.has_overlapping_areas():
-		$Apple.place_randomly()
