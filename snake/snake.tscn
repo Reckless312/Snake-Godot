@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckqfiifrckqi1"]
+
+[ext_resource type="Script" path="res://snake.gd" id="1_jaibu"]
+[ext_resource type="PackedScene" uid="uid://bdtq6svqpbjsd" path="res://snake_head.tscn" id="2_x2ucs"]
+
+[node name="snake" type="Node2D"]
+script = ExtResource("1_jaibu")
+metadata/_edit_group_ = true
+
+[node name="snake_head" parent="." instance=ExtResource("2_x2ucs")]
+position = Vector2(0, 0)

@@ -24,8 +24,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_djyni"]
-radius = 382.565
-height = 781.866
+radius = 154.0
+height = 308.0
 
 [node name="Apple" type="Area2D" groups=["apples"]]
 position = Vector2(13, 0)
@@ -34,11 +34,12 @@ script = ExtResource("1_3pxcn")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_kmpxt")
 animation = &"red"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_djyni")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

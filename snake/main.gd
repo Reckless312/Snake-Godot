@@ -1,6 +1,8 @@
 extends Node
 
 var score
+var apples = preload("res://apple.tscn")
+var apple
 
 func _ready() -> void:
 	pass
@@ -13,22 +15,28 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2).timeout	
 	
-	$snake_head.start($StartPosition.position)	
+	create_an_apple()
 	
-	$Apple.place_randomly()
+	$snake.reset($StartPosition.position)
 	
 	$Music.play()
 
-func _on_snake_head_apple_hit() -> void:
+func create_an_apple():
+	apple = apples.instantiate()
+	add_child(apple)
+	apple.place_randomly()
+	apple.connect("was_eaten", self._on_snake_apple_hit)
+
+func _on_snake_apple_hit() -> void:
 	$EatingApple.play()
-	$Apple.hide()
-	$Apple.place_randomly()
+	apple.queue_free()
+	create_an_apple()
+	$snake.create_body()
 	$HUD.update_score(10)
 
 
-func _on_snake_head_game_over() -> void:
+func _on_snake_game_over() -> void:
 	$HUD.show_game_over()
 	$Apple.hide()
-	$snake_head.hide()

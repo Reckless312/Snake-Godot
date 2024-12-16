@@ -1,8 +1,5 @@
 extends Area2D
 
-signal apple_hit
-signal game_over
-
 @export var speed = 400
 var screen_size
 
@@ -36,10 +33,6 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.play()
 		
 	position += velocity * delta
-	
-	if position.x < 0 or position.x > screen_size.x or position.y < 0 or position.y > screen_size.y:
-		game_over.emit()
-		reset()
 
 func reset():
 	position = Vector2.ZERO
@@ -51,7 +44,3 @@ func start(pos):
 	velocity.y -= 1
 	show()
 	$CollisionShape2D.disabled = false
-
-
-func _on_apple_area_entered(area: Area2D) -> void:
-	apple_hit.emit()

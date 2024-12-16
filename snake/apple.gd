@@ -1,5 +1,7 @@
 extends Area2D
 
+signal was_eaten
+
 var rng = RandomNumberGenerator.new()
 var screen_size
 var colors
@@ -21,3 +23,6 @@ func place_randomly():
 			break
 	$AnimatedSprite2D.play(colors[randi() % colors.size()])
 	show()
+
+func _on_area_entered(area: Area2D) -> void:
+	was_eaten.emit()
