@@ -25,4 +25,5 @@ func place_randomly():
 	show()
 
 func _on_area_entered(area: Area2D) -> void:
-	was_eaten.emit()
+	if area is snake_head:
+		was_eaten.emit()

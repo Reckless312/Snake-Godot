@@ -1,7 +1,12 @@
 extends Area2D
 
+class_name snake_head
+
+signal game_over
+
 @export var speed = 400
 var screen_size
+var tail_position
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -12,6 +17,7 @@ var velocity = Vector2.ZERO
 func _process(delta: float) -> void:
 	var new_velocity = Vector2.ZERO
 	velocity = velocity.normalized()
+	tail_position = position
 	
 	if Input.is_action_pressed("right") and velocity.x != -1:
 		new_velocity.x = 1
@@ -33,6 +39,11 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.play()
 		
 	position += velocity * delta
+	
+	if position.x < 0 or position.x > screen_size.x or position.y < 0 or position.y > screen_size.y:
+		game_over.emit()
+		reset()
+		hide()
 
 func reset():
 	position = Vector2.ZERO
