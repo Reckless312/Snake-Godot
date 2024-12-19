@@ -29,9 +29,6 @@ func _process(delta: float) -> void:
 			body_list[i].position = position_queue[position_queue.size() - 1]
 		else:
 			body_list[i].position = $snake_head.position
-			
-	
-	#set_collision_for_bodies()
 
 func new_game():
 	$Music.play()
@@ -53,19 +50,21 @@ func create_an_apple():
 	add_child(apple)
 	
 	place_apple_randomly()
-	apple.connect("was_eaten", self._on_snake_apple_hit)
+	if apple != null:
+		apple.connect("was_eaten", self._on_snake_apple_hit)
 
 func _on_snake_apple_hit() -> void:
 	$EatingApple.play()
-	
-	apple.queue_free()
+	if apple != null:
+		apple.queue_free()
 	create_an_apple()
 	
 	var new_body = snake_bodies.instantiate()
 	new_body.position = $snake_head.position
 	
 	body_list.append(new_body)
-	new_body.connect("was_entered", self._on_snake_head_game_over)
+	set_collision_for_bodies()
+	new_body.connect("was_entered", $snake_head.reset)
 	
 	add_child(new_body)
 	
@@ -85,17 +84,19 @@ func _on_snake_head_game_over() -> void:
 
 func place_apple_randomly():
 	while true:
-		apple.position = Vector2(rng.randi() % int(screen_size.x), rng.randi() % int(screen_size.y))
+		if apple != null:
+			apple.position = Vector2(rng.randi() % int(screen_size.x), rng.randi() % int(screen_size.y))
 		await get_tree().process_frame
 		await get_tree().physics_frame
 		await get_tree().physics_frame
-		if apple.get_overlapping_areas().size() == 0:
+		if apple != null and apple.get_overlapping_areas().size() == 0:
 			break
-	apple.show()
+	if apple != null:
+		apple.show()
 
 
 func set_collision_for_bodies():
 	for i in range(body_list.size()):
-		if (i + 1) * spacing - 1 < position_queue.size() and i != body_list.size() -1:
+		if (i + 1) * spacing - 1 < position_queue.size() and i != body_list.size() -1 and i != body_list.size() - 2:
 			body_list[i].get_node("CollisionShape2D").set_deferred("disabled", false)
 			
