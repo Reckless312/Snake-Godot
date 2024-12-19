@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	
 	if position.x < 0 or position.x > screen_size.x or position.y < 0 or position.y > screen_size.y:
+		$CollisionShape2D.set_deferred("disabled", true)
 		game_over.emit()
 		reset()
 		hide()

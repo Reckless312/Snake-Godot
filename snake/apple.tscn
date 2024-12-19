@@ -30,6 +30,8 @@ height = 308.0
 [node name="Apple" type="Area2D" groups=["apples"]]
 position = Vector2(13, 0)
 scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_3pxcn")
 metadata/_edit_group_ = true
 
