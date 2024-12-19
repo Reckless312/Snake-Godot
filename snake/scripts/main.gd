@@ -1,7 +1,7 @@
 extends Node
 
-var apples = preload("res://apple.tscn")
-var snake_bodies = preload("res://snake_body.tscn")
+var apples = preload("res://scenes/apple.tscn")
+var snake_bodies = preload("res://scenes/snake_body.tscn")
 
 var mutex : Mutex = Mutex.new()
 
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 			body_list[i].position = $snake_head.position
 
 func new_game():
-	#$Music.play()
+	$Music.play()
 	
 	score = 0
 	$HUD.update_score(score)
@@ -63,7 +63,7 @@ func create_an_apple():
 	mutex.unlock()
 
 func _on_snake_apple_hit() -> void:
-	#$EatingApple.play()
+	$EatingApple.play()
 	
 	mutex.lock()
 	if apple != null:

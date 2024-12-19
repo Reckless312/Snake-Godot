@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwr1ggqprofhj"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_l243u"]
-[ext_resource type="PackedScene" uid="uid://bdtq6svqpbjsd" path="res://snake_head.tscn" id="2_yqjgv"]
-[ext_resource type="PackedScene" uid="uid://j1mduwm4plgf" path="res://hud.tscn" id="4_12mim"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_fnhwx"]
+[ext_resource type="PackedScene" uid="uid://bdtq6svqpbjsd" path="res://scenes/snake_head.tscn" id="2_yqjgv"]
+[ext_resource type="PackedScene" uid="uid://j1mduwm4plgf" path="res://scenes/hud.tscn" id="4_12mim"]
 [ext_resource type="AudioStream" uid="uid://c0mirpsrqf756" path="res://assets/music/Roku Snake OST - Main Theme.mp3" id="5_fpnub"]
 [ext_resource type="AudioStream" uid="uid://d305pgaqeg5w2" path="res://assets/music/20279__koops__apple_crunch_16.wav" id="6_y0wmf"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_l243u")
+script = ExtResource("1_fnhwx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

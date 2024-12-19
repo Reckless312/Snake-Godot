@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjmgsaimka72j"]
 
-[ext_resource type="Script" path="res://apple.gd" id="1_3pxcn"]
+[ext_resource type="Script" path="res://scripts/apple.gd" id="1_idblm"]
 [ext_resource type="Texture2D" uid="uid://bc22jiyqr77e7" path="res://assets/png/apple_green.png" id="2_mmile"]
 [ext_resource type="Texture2D" uid="uid://c43ujenwt2jd6" path="res://assets/png/apple_red.png" id="2_rl4av"]
 
@@ -32,7 +32,7 @@ position = Vector2(13, 0)
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 7
-script = ExtResource("1_3pxcn")
+script = ExtResource("1_idblm")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

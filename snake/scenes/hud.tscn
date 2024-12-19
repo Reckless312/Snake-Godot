@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://j1mduwm4plgf"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_w50fm"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_2yp5q"]
 [ext_resource type="FontFile" uid="uid://cwsyf0ek6lwfo" path="res://assets/fonts/SuperMario256.ttf" id="2_1hr30"]
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_w50fm")
+script = ExtResource("1_2yp5q")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5

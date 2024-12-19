@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bdtq6svqpbjsd"]
 
 [ext_resource type="Texture2D" uid="uid://bfn25d1e8fryo" path="res://assets/png/snake_green_head.png" id="1_fa1bl"]
-[ext_resource type="Script" path="res://snake_head.gd" id="1_m2uwt"]
+[ext_resource type="Script" path="res://scripts/snake_head.gd" id="1_gvobm"]
 [ext_resource type="Texture2D" uid="uid://cws10utqx0kdc" path="res://assets/png/snake_green_xx.png" id="2_benpk"]
 [ext_resource type="Texture2D" uid="uid://cwuxl1uj31vnv" path="res://assets/png/snake_green_eyes.png" id="2_k6ger"]
 
@@ -34,7 +34,7 @@ radius = 101.0
 position = Vector2(-2, 2)
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_m2uwt")
+script = ExtResource("1_gvobm")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
