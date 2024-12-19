@@ -1,11 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdtq6svqpbjsd"]
+[gd_scene load_steps=7 format=3 uid="uid://bdtq6svqpbjsd"]
 
 [ext_resource type="Texture2D" uid="uid://bfn25d1e8fryo" path="res://assets/png/snake_green_head.png" id="1_fa1bl"]
 [ext_resource type="Script" path="res://snake_head.gd" id="1_m2uwt"]
+[ext_resource type="Texture2D" uid="uid://cws10utqx0kdc" path="res://assets/png/snake_green_xx.png" id="2_benpk"]
 [ext_resource type="Texture2D" uid="uid://cwuxl1uj31vnv" path="res://assets/png/snake_green_eyes.png" id="2_k6ger"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oh8fc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_benpk")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 2.0,
 "texture": ExtResource("1_fa1bl")
@@ -19,7 +28,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4yka2"]
-radius = 100.319
+radius = 101.0
 
 [node name="snake_head" type="Area2D"]
 position = Vector2(-2, 2)
@@ -31,7 +40,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_oh8fc")
-frame_progress = 0.237297
+animation = &"dead"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4yka2")

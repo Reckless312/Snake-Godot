@@ -7,6 +7,7 @@ signal game_over
 @export var speed = 400
 var screen_size
 var tail_position
+var pause_head = true
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -15,6 +16,9 @@ func _ready() -> void:
 var velocity = Vector2.ZERO
 
 func _process(delta: float) -> void:
+	if pause_head == true:
+		return
+	
 	var new_velocity = Vector2.ZERO
 	velocity = velocity.normalized()
 	tail_position = position
@@ -44,15 +48,25 @@ func _process(delta: float) -> void:
 		reset()
 
 func reset():
-	position = Vector2.ZERO
+	pause_head = true
+	$AnimatedSprite2D.animation = "dead"
+	
+	game_over.emit()
+	
 	velocity = Vector2.ZERO
+	await get_tree().create_timer(2.0).timeout
+	
+	position = Vector2.ZERO
+	
 	$AnimatedSprite2D.rotation_degrees = 0
 	$CollisionShape2D.set_deferred("disabled", true)
-	game_over.emit()
+	
 	hide()
 	
 func start(pos):
 	position = pos
 	velocity.y -= 1
+	$AnimatedSprite2D.animation = "default"
 	show()
+	pause_head = false
 	$CollisionShape2D.disabled = false
