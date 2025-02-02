@@ -4,6 +4,10 @@ class_name snake_head
 
 signal game_over
 
+var snake_type = ["green_snake", "yellow_snake"]
+var snake_dead = ["green_dead", "yellow_dead"]
+@export var type = 0
+var rng = RandomNumberGenerator.new()
 @export var speed = 400
 var screen_size
 var tail_position
@@ -23,6 +27,7 @@ func _process(delta: float) -> void:
 	velocity = velocity.normalized()
 	tail_position = position
 	
+	#Movement
 	if Input.is_action_pressed("right") and velocity.x != -1:
 		new_velocity.x = 1
 		$AnimatedSprite2D.rotation_degrees = 90
@@ -44,12 +49,13 @@ func _process(delta: float) -> void:
 		
 	position += velocity * delta
 	
+	#Out of bounds - Game over
 	if position.x < 0 or position.x > screen_size.x or position.y < 0 or position.y > screen_size.y:
 		reset()
 
 func reset():
 	pause_head = true
-	$AnimatedSprite2D.animation = "dead"
+	$AnimatedSprite2D.animation = snake_dead[type]
 	
 	game_over.emit()
 	
@@ -62,11 +68,12 @@ func reset():
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	hide()
+	type = rng.randi() % 2
+	$AnimatedSprite2D.animation = snake_type[type]
 	
 func start(pos):
 	position = pos
 	velocity.y -= 1
-	$AnimatedSprite2D.animation = "default"
 	show()
 	pause_head = false
 	$CollisionShape2D.disabled = false

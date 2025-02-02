@@ -4,10 +4,14 @@ class_name snake_body
 
 signal was_entered
 
+var colors = ["green_body", "yellow_body"]
 var spawned_flag = false
 
 func _ready() -> void:
 	pass
+
+func assign_animation(type: int):
+	$AnimatedSprite2D.animation = colors[type]
 
 func _process(delta: float) -> void:
 	pass

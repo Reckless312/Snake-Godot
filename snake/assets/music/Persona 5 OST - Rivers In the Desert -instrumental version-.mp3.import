@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://idv76avxv666"
+path="res://.godot/imported/Persona 5 OST - Rivers In the Desert -instrumental version-.mp3-886068cf99bc361bef45357425383d8f.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Persona 5 OST - Rivers In the Desert -instrumental version-.mp3"
+dest_files=["res://.godot/imported/Persona 5 OST - Rivers In the Desert -instrumental version-.mp3-886068cf99bc361bef45357425383d8f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

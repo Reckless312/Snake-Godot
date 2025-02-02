@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bffr1vnookrrj"]
+[gd_scene load_steps=6 format=3 uid="uid://bffr1vnookrrj"]
 
 [ext_resource type="Script" path="res://scripts/snake_body.gd" id="1_hu1x6"]
 [ext_resource type="Texture2D" uid="uid://btwv27ofel86p" path="res://assets/png/snake_green_blob.png" id="2_m2tq7"]
+[ext_resource type="Texture2D" uid="uid://b3aov030vkw2i" path="res://assets/png/snake_yellow_blob.png" id="3_mewjj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0lu3a"]
 animations = [{
@@ -10,7 +11,15 @@ animations = [{
 "texture": ExtResource("2_m2tq7")
 }],
 "loop": true,
-"name": &"default",
+"name": &"green_body",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mewjj")
+}],
+"loop": true,
+"name": &"yellow_body",
 "speed": 5.0
 }]
 
@@ -26,6 +35,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.35, 0.35)
 sprite_frames = SubResource("SpriteFrames_0lu3a")
+animation = &"yellow_body"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8wbub")

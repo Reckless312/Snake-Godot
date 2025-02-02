@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdtq6svqpbjsd"]
+[gd_scene load_steps=10 format=3 uid="uid://bdtq6svqpbjsd"]
 
 [ext_resource type="Texture2D" uid="uid://bfn25d1e8fryo" path="res://assets/png/snake_green_head.png" id="1_fa1bl"]
 [ext_resource type="Script" path="res://scripts/snake_head.gd" id="1_gvobm"]
 [ext_resource type="Texture2D" uid="uid://cws10utqx0kdc" path="res://assets/png/snake_green_xx.png" id="2_benpk"]
 [ext_resource type="Texture2D" uid="uid://cwuxl1uj31vnv" path="res://assets/png/snake_green_eyes.png" id="2_k6ger"]
+[ext_resource type="Texture2D" uid="uid://c8oel6hjqp10c" path="res://assets/png/snake_yellow_xx.png" id="5_dc4em"]
+[ext_resource type="Texture2D" uid="uid://b8l0xoawfi38y" path="res://assets/png/snake_yellow_head.png" id="6_6e4ic"]
+[ext_resource type="Texture2D" uid="uid://cidirs0q55hps" path="res://assets/png/snake_yellow_eyes.png" id="7_dbefk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oh8fc"]
 animations = [{
@@ -12,7 +15,7 @@ animations = [{
 "texture": ExtResource("2_benpk")
 }],
 "loop": true,
-"name": &"dead",
+"name": &"green_dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -23,7 +26,26 @@ animations = [{
 "texture": ExtResource("2_k6ger")
 }],
 "loop": true,
-"name": &"default",
+"name": &"green_snake",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dc4em")
+}],
+"loop": true,
+"name": &"yellow_dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("6_6e4ic")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_dbefk")
+}],
+"loop": true,
+"name": &"yellow_snake",
 "speed": 2.0
 }]
 
@@ -40,7 +62,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_oh8fc")
-animation = &"dead"
+animation = &"yellow_snake"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4yka2")
