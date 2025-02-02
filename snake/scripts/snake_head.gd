@@ -8,12 +8,15 @@ var snake_type = ["green_snake", "yellow_snake"]
 var snake_dead = ["green_dead", "yellow_dead"]
 @export var type = 0
 var rng = RandomNumberGenerator.new()
+
 @export var speed = 400
 var screen_size
-var tail_position
 var pause_head = true
 
 func _ready() -> void:
+	rng.randomize()
+	type = rng.randi() % 2
+	$AnimatedSprite2D.animation = snake_type[type]
 	screen_size = get_viewport_rect().size
 	hide()
 	
@@ -25,7 +28,6 @@ func _process(delta: float) -> void:
 	
 	var new_velocity = Vector2.ZERO
 	velocity = velocity.normalized()
-	tail_position = position
 	
 	#Movement
 	if Input.is_action_pressed("right") and velocity.x != -1:
