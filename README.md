@@ -1,6 +1,8 @@
 # Description
 - A simple implementation of the classic Snake game using the Godot Game Engine and it's GDScript language <br/>
 - Game follows the same basic mechanics with a little easter egg music included in it <br/>
+# Requirements
+- Linux Operating System
 # V1.0.0
 - Basic features added
 # V1.1.0
